@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+<style> 
+#myVideo{
+    position:absolute;
+    left:500px;
+    top:500px;
+    transform: rotate(0deg);
+    border:10px dotted red;
+    opacity: 1.0; /* 1불투명 ~ 0투명*/
+    transform:scale(2,2);
+}
+</style>
+<script>
+var op=1; //불투명이어야 하므로..
+
+//문서내에 비디오 요소를 재생한다    
+function playMovie(){
+   var myVideo = document.getElementById("myVideo");
+   myVideo.play();
+}
+
+function pauseMovie(){
+   var myVideo = document.getElementById("myVideo");
+   myVideo.pause();
+}
+function fadeOut(){
+    op=op - 0.1;
+
+    var myVideo = document.getElementById("myVideo");
+    myVideo.style.opacity = op;
+}
+</script>
+</head>
+<body>
+
+<button onClick="playMovie()">재생하기</button>
+<button onClick="pauseMovie()">정지하기</button>
+<button onClick="fadeOut()">FadeOut</button>
+<button onClick="setScale()">크기설정(비율)</button>
+<p>
+
+<video id="myVideo" controls>
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+</video>    
+
+</body>    
+</html>

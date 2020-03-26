@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+<style>
+/*
+1) CSS란스타일 시트는 프로그래밍 언어가 아니라, 
+        문서의 디자인을 보완하는 기술이다!!
+
+2) 스타일 시트의 문법형식 (Syntax)
+    누구(선택자)를 어떻게 할지(속성)..
+
+    예)  img(선택자){
+            width:100px;(속성)
+          }
+    선택자의 표현방식은 다양하다... 
+    예) #pic   : 문서내에  pic 이라는 아이디를 갖는 요소를 지칭 
+          table  :  문서내에  table 태그를 지칭 
+          .test  :  문서내에  test 라는 이름을 갖는 클래스를 지칭  
+*/    
+body{
+    margin:0px; /*left, top 의 마진을 0으로 하면 없어짐*/
+}
+
+div{
+    background-image: url("../images/plane/game_bg.jpg");
+    background-repeat: repeat-x; /*좌우로만 반복!!*/
+    background-position: -200px 0px;  /**/
+    height:640px;
+}
+
+/*선택자 중 아이디를 이용하는 방법*/
+#gear{
+    width:80px;
+    position:absolute;/*부모 요소를 기준으로 한 위치 속성*/
+    left:200px;
+    top:200px;
+    transform: rotate(30deg);
+}
+</style>
+<script>
+var x=0;
+var r = 0;
+
+//문서내의 div안의 배경이미지의 x좌표를 음수로 누적시킨다!!
+function moveBg(){    
+    x = x -10;
+    r = r + 2;
+
+    var bg = document.getElementById("bg");
+    bg.style.backgroundPosition=x+"px 0px";
+
+    //문서내의 gear라는 아이디를 갖는 이미지의 각도도 수정하자
+    var gear = document.getElementById("gear");
+    gear.style.transform="rotate("+ r +"deg)";
+}    
+
+//자동은 이미 제작된 수동함수를 일정 시간 간격으로 호출하면 된다!!
+//그리고 이 호출을 인간 대신 컴퓨터가 하면 된다!!
+function auto(){
+    setInterval("moveBg()",40); //1000분 1초까지 표현가능
+}
+</script>    
+</head>
+<body>
+    <!-- 화면을 분할하는 용도의 태그 투명, 초기의 크기는 없다 -->
+    <div id="bg">
+        <button onClick="auto();">Game Start!!</button>
+
+        <img src="../images/gear.png" id="gear"/>
+
+    </div>
+</body>
+</html>

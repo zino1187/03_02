@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+<style> 
+/* pic 이라는 아이디를 의미하는 선택자*/
+#pic{
+    position:absolute;
+    left:100px;
+    top:150px;
+}   
+</style>
+<script> 
+var x=100;
+var y=150;
+
+function move(){
+    //문서내의 pic이라는 아이디를 갖는 요소의 left, top위치값을 변경
+    var pic = document.getElementById("pic");
+    //사람이 키보드를 누를때마다, 컴퓨터에게 문자로 전달되는게 아니라
+    //각 키보드의 키마다 1:1 대응하는 십진수 값이 존재하는데, 
+    //이 값은  미국표준협회에서 정했다..그값을 구경해보자!
+    //alert("당신이 누른 키값에 매칭되는 아스키값은 "+event.keyCode);
+
+    if(event.keyCode ==39){
+        x += 5;
+        pic.style.left = x+"px"; //우측으로 가는 코드..
+    }
+    if(event.keyCode ==37){
+        x -= 5;
+        pic.style.left = x+"px"; //좌측으로 가는 코드..
+    }
+    if(event.keyCode ==38){
+        y -= 5;
+        pic.style.top = y+"px"; //위쪽으로 가는 코드..
+    }
+    if(event.keyCode ==40){
+        y += 5;
+        pic.style.top = y+"px"; //위쪽으로 가는 코드..
+    }    
+}   
+</script>
+</head>
+<body onkeydown="move()">
+    
+    <img id="pic" src="../images/pica.png" width="80px"/>
+
+</body>
+</html>
